@@ -1,18 +1,18 @@
-package com.rest.demo;
+package com.example.demo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
 	
-	 @GetMapping(value = "/test", produces = {"application/json"})
-	    ResponseEntity<TestRes> insert()
+	 @PostMapping(value = "/test", produces = {"application/json"})
+	    ResponseEntity<TestRes> insert(@RequestBody String ob)
 	    {
-		 	System.out.println("test request");
+		 	System.out.println(ob.toString());
 		 	TestRes s= new TestRes();
 		 	s.setStatusCode("01");
 		 	s.setMessageText("Message queued for processing");
