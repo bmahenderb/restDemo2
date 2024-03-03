@@ -19,7 +19,7 @@ jobs:
 
         # Read property values using grep and awk
         MY_VARIABLE=$(grep '^my.variable=' "$PROPERTIES_FILE" | awk -F'=' '{print $2}')
-        ANOTHER_VARIABLE=$(grep '^another.variable=' "$PROPERTIES_FILE" | awk -F'=' '{print $2}')
+        ANOTHER_VARIABLE=$(grep '^spring.application.name=' "$PROPERTIES_FILE" | awk -F'=' '{print $2}')
 
         echo "my.variable is $MY_VARIABLE"
         echo "another.variable is $ANOTHER_VARIABLE"
