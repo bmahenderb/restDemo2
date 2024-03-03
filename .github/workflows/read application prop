@@ -1,0 +1,25 @@
+name: Read application.properties
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  read-properties:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Read application.properties
+      run: |
+        PROPERTIES_FILE="src/main/resources/application.properties"
+
+        # Read property values using grep and awk
+        MY_VARIABLE=$(grep '^my.variable=' "$PROPERTIES_FILE" | awk -F'=' '{print $2}')
+        ANOTHER_VARIABLE=$(grep '^another.variable=' "$PROPERTIES_FILE" | awk -F'=' '{print $2}')
+
+        echo "my.variable is $MY_VARIABLE"
+        echo "another.variable is $ANOTHER_VARIABLE"
